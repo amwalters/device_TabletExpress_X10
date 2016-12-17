@@ -15,10 +15,10 @@ PRODUCT_COPY_FILES += \
 
 # Boot Ramdisk
 
-#PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/TabletExpress/X10/root,root)
-
 PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/TabletExpress/X10/recovery/root,root)
+
+#PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/res/images/charger/battery_fail.png:root/res/images/charger/battery_fail.png \
     $(LOCAL_PATH)/root/res/images/charger/battery_scale.png:root/res/images/charger/battery_scale.png \
     $(LOCAL_PATH)/root/sbin/init_parttion.sh:root/sbin/init_parttion.sh \
