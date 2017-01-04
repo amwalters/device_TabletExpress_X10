@@ -1,5 +1,6 @@
 # inherit from the proprietary version
--include vendor/TabletExpress/X10/BoardConfigVendor.mk
+include vendor/TabletExpress/X10/BoardConfigVendor.mk
+include device/softwinner/octopus-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/TabletExpress/X10
 
@@ -29,9 +30,6 @@ HAVE_HTC_AUDIO_DRIVER := true
 BOARD_USES_GENERIC_AUDIO := true
 # CEDARX_CHIP_VERSION := 
 
-# Bluetooth
-BOARD_HAS_BLUETOOTH := true
-
 # Bootloader
 BOARD_USES_UBOOT := true
 TARGET_BOOTLOADER_BOARD_NAME := exdroid
@@ -48,7 +46,8 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
 
 # EGL
-BOARD_EGL_CFG := $(LOCAL_PATH)/egl/egl.cfg
+#BOARD_EGL_CFG := $(LOCAL_PATH)/egl/egl.cfg
+BOARD_EGL_CFG := device/softwinner/octopus-common/egl/egl.cfg
 
 # Kernel
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
@@ -82,19 +81,57 @@ TARGET_BOARD_PLATFORM_GPU := POWERVR-SGX-544MP
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/recovery.fstab    
 
+
+# 1.1  realtek wifi configuration
+BOARD_WIFI_VENDOR := realtek
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
+BOARD_HOSTAPD_DRIVER        := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_rtl   
+BOARD_USR_WIFI := rtl8723bs
+BOARD_WLAN_DEVICE := rtl8723bs
+
+# 2. Bluetooth Configuration
+# make sure BOARD_HAVE_BLUETOOTH is true for every bt vendor
+#BOARD_HAVE_BLUETOOTH := true
+#BOARD_HAVE_BLUETOOTH_BCM := true
+#BOARD_HAVE_BLUETOOTH_RTK := true
+#BLUETOOTH_HCI_USE_RTK_H5 := true
+#BOARD_HAVE_BLUETOOTH_NAME := rtl8723bs
+#BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/TabletExpress/X10/bluetooth/
+# Disable bluetooth until we can get it working
+BOARD_HAVE_BLUETOOTH := false
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/common/bluetooth
+BLUETOOTH_HCI_USE_USB := false
+BOARD_HAVE_BLUETOOTH_BCM := false
+
 # sepolicy
-BOARD_SEPOLICY_DIRS := \
+#BOARD_SEPOLICY_DIRS := \
        $(LOCAL_PATH)/sepolicy
+#BOARD_SEPOLICY_DIRS := \
+    device/softwinner/octopus-common/sepolicy
+
+# The list below is order dependent
+#BOARD_SEPOLICY_UNION := \
+    device.te \
+    file_contexts \
+    genfs_contexts \
+    mediaserver.te \
+    netd.te \
+    surfaceflinger.te \
+    vold.te
+
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
 # Wifi
-BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
-WPA_SUPPLICANT_VERSION := VER_0_8_X
+#BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
+#WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
--include vendor/TabletExpress/X10/X10-vendor-blobs.mk
+include vendor/TabletExpress/X10/X10-vendor-blobs.mk
 
 # Hack for building without kernel sources
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)

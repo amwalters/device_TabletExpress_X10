@@ -15,7 +15,8 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-
+    symlink /mnt/shell/emulated/0 /storage/emulated/0
+    
     mkdir /mnt/media_rw/extsd 0700 media_rw media_rw
     mkdir /storage/extsd 0700 root root
     export SECONDARY_STORAGE /storage/extsd
