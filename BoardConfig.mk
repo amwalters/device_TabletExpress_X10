@@ -78,10 +78,6 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := octopus
 TARGET_BOARD_PLATFORM_GPU := POWERVR-SGX-544MP
 
-# Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/recovery.fstab    
-
-
 # 1.1  realtek wifi configuration
 BOARD_WIFI_VENDOR := realtek
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -93,18 +89,12 @@ BOARD_USR_WIFI := rtl8723bs
 BOARD_WLAN_DEVICE := rtl8723bs
 
 # 2. Bluetooth Configuration
-# make sure BOARD_HAVE_BLUETOOTH is true for every bt vendor
-#BOARD_HAVE_BLUETOOTH := true
-#BOARD_HAVE_BLUETOOTH_BCM := true
-#BOARD_HAVE_BLUETOOTH_RTK := true
-#BLUETOOTH_HCI_USE_RTK_H5 := true
-#BOARD_HAVE_BLUETOOTH_NAME := rtl8723bs
-#BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/TabletExpress/X10/bluetooth/
-# Disable bluetooth until we can get it working
-BOARD_HAVE_BLUETOOTH := false
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/common/bluetooth
-BLUETOOTH_HCI_USE_USB := false
-BOARD_HAVE_BLUETOOTH_BCM := false
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_BLUETOOTH_RTK := true
+BLUETOOTH_HCI_USE_RTK_H5 := true
+BOARD_HAVE_BLUETOOTH_NAME := rtl8723bs
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/TabletExpress/X10/bluetooth/
 
 # sepolicy
 #BOARD_SEPOLICY_DIRS := \

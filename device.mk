@@ -55,9 +55,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
    # Radio Packages and Configuration Flie
 $(call inherit-product, device/softwinner/common/rild/radio_common.mk)
 
-#PRODUCT_PACKAGES += Bluetooth
+PRODUCT_PACKAGES += Bluetooth
 #rtl8723bs bt fw and config
-#$(call inherit-product, hardware/realtek/bluetooth/rtl8723bs/firmware/rtlbtfw_cfg.mk)
+$(call inherit-product, hardware/realtek/bluetooth/rtl8723bs/firmware/rtlbtfw_cfg.mk)
 
 # Wifi
 PRODUCT_PACKAGES += \
