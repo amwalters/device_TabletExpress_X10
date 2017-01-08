@@ -1,6 +1,6 @@
 # inherit from the proprietary version
-include vendor/TabletExpress/X10/BoardConfigVendor.mk
-include device/softwinner/octopus-common/BoardConfigCommon.mk
+-include vendor/TabletExpress/X10/BoardConfigVendor.mk
+-include device/softwinner/octopus-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/TabletExpress/X10
 
@@ -89,12 +89,13 @@ BOARD_USR_WIFI := rtl8723bs
 BOARD_WLAN_DEVICE := rtl8723bs
 
 # 2. Bluetooth Configuration
+# make sure BOARD_HAVE_BLUETOOTH is true for every bt vendor
 BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_BLUETOOTH_RTK := true
 BLUETOOTH_HCI_USE_RTK_H5 := true
 BOARD_HAVE_BLUETOOTH_NAME := rtl8723bs
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/TabletExpress/X10/bluetooth/
+
 
 # sepolicy
 #BOARD_SEPOLICY_DIRS := \
@@ -121,7 +122,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_stora
 #WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
-include vendor/TabletExpress/X10/X10-vendor-blobs.mk
+-include vendor/TabletExpress/X10/X10-vendor-blobs.mk
 
 # Hack for building without kernel sources
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)

@@ -113,7 +113,8 @@ on early-fs
     insmod /system/vendor/modules/mcs7830.ko
     insmod /system/vendor/modules/rtl8150.ko
     insmod /system/vendor/modules/cdc_ether.ko
-		insmod /system/vendor/modules/rtl_bluesleep.ko
+    insmod /system/vendor/modules/8723bs-vq0.ko ifname=wlan0 if2name=p2p0
+    insmod /system/vendor/modules/rtl_bluesleep.ko
 
 
 #inet_recover

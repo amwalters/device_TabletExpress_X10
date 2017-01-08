@@ -20,7 +20,7 @@ PRODUCT_PACKAGES += gatord
 #PRODUCT_COPY_FILES += \
     device/softwinner/octopus-ibt/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf    
     
-# Setup boot
+# Ramdisk
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/TabletExpress/X10/recovery/root,root)
 
